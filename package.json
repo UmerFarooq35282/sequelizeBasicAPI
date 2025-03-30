@@ -15,7 +15,7 @@
     "sequelize": "^6.37.5"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "postinstall": "npm install mysql2"
   }
 }
