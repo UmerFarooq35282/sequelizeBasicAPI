@@ -21,7 +21,7 @@ const fetchAllUsers = async (req, res) => {
 const fetchUserByID = async (req, res) => {
   let userID = req.params.id;
   try {
-    let user = await User.findAll({
+    let user = await User.findOne({
       where: {
         id: userID,
       },
