@@ -5,7 +5,6 @@ import userRoute from './routes/usersRoute.js';
 import categoryRoute from './routes/categoriesRoute.js';
 import authorsRoute from './routes/authorRoutes.js';
 import booksRoute from './routes/bookRoutes.js';
-import fileUploadMiddleware from './utils/handleFIleUpload.js';
 
 const app = express();
 

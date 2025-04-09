@@ -4,7 +4,6 @@ import {
   getBooksByCat,
   getBookByID,
 } from "../controller/bookController.js";
-import fileUploadMiddleware from "../utils/handleFIleUpload.js";
 
 const booksRoute = express.Router();
 
@@ -21,7 +20,7 @@ booksRoute.get("/", (req, res) => {
 
 booksRoute.post('/bookByID' , getBookByID);
 
-booksRoute.post('/addBook' , fileUploadMiddleware('bookImage') , (req,res) => {
+booksRoute.post('/addBook' , (req,res) => {
   console.log(req.file.mimetype)
 })
 
