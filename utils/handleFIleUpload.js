@@ -1,8 +1,19 @@
 import multer from 'multer'
+import path from 'path'
 
 let allowedFiles = ['image/jpeg','image/webp','image/png']
 
-const storage = multer.memoryStorage();
+const storage = multer.diskStorage({
+  destination: (req,file,cb) => {
+    let folderName = 'images/'
+    cb(null,folderName)
+  },
+  filename: (req,file,cb) => {
+    if(file){
+      cb(null,`${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    }
+  }
+});
 
 const fileFilterFn = (req,file,cb) => {
   if(allowedFiles.includes(file.mimetype)){
