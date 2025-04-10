@@ -1,6 +1,7 @@
 import User from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import cloudinary from "../cloudnary/cloudnaryConfig.js";
+import fs from 'fs'
 const fetchAllUsers = async (req, res) => {
   try {
     let allUsers = await User.findAll({
@@ -63,6 +64,10 @@ const addUser = async (req, res) => {
       message: "User not added Error in controller",
       error: error.message,
     });
+  } finally {
+    if(file && fs.existsSync(file.path)){
+      fs.unlinkSync(file.path)
+    }
   }
 };
 
